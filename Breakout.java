@@ -65,7 +65,7 @@ public class Breakout extends GraphicsProgram {
 /** Runs the Breakout program. */
 	public void run() {
 		drawBricks();
-		// putPaddle();
+		getPaddle();
 		// for (3 times) - 
 		// play
 		// 
@@ -94,9 +94,7 @@ public class Breakout extends GraphicsProgram {
 		y += BRICK_SEP + BRICK_HEIGHT;
 		drawRow(y,Color.CYAN);
 		y += BRICK_SEP + BRICK_HEIGHT;
-		drawRow(y,Color.CYAN);
-		
-		
+		drawRow(y,Color.CYAN);		
 	}
 	
 	private void drawRow(int y, Color c) {
@@ -109,10 +107,17 @@ public class Breakout extends GraphicsProgram {
 			brick.setFilled(true);
 			add(brick);
 		}
+	}
+	private void getPaddle() {
+		int x = (WIDTH - PADDLE_WIDTH) / 2;
+		int y = HEIGHT - (PADDLE_HEIGHT+PADDLE_Y_OFFSET);
+		GRect paddle = new GRect (x,y,PADDLE_WIDTH,PADDLE_HEIGHT);
+		paddle.setColor(Color.WHITE);
+		paddle.setFilled(true);
+		add(paddle);
 		
 	}
 
 	//DEFINE METHODS:
 	//private void play()
-	//private void putPaddle()
-}
+} // end class.
