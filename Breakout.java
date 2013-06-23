@@ -44,6 +44,10 @@ public class Breakout extends GraphicsProgram {
 /** Width of a brick */
 	private static final int BRICK_WIDTH =
 	  (WIDTH - (NBRICKS_PER_ROW - 1) * BRICK_SEP) / NBRICKS_PER_ROW;
+	
+/** Width of a row */
+	private static final int ROW_WIDTH =
+	  (BRICK_WIDTH * NBRICKS_PER_ROW) + (BRICK_SEP * (NBRICKS_PER_ROW - 1));
 
 /** Height of a brick */
 	private static final int BRICK_HEIGHT = 8;
@@ -85,7 +89,7 @@ public class Breakout extends GraphicsProgram {
 	
 	private void drawRow(int y, Color c) {
 		for (int i = 0; i < NBRICKS_PER_ROW; i++) {
-			int x = 1;
+			int x = (WIDTH - ROW_WIDTH) / 2;
 			int dx = (BRICK_WIDTH + BRICK_SEP) * i;
 			x = x + dx;
 			GRect brick = new GRect (x,y,BRICK_WIDTH,BRICK_HEIGHT);
