@@ -85,6 +85,18 @@ public class Breakout extends GraphicsProgram {
 		drawRow(y,Color.ORANGE);
 		y += BRICK_SEP + BRICK_HEIGHT;
 		drawRow(y,Color.YELLOW);
+		y += BRICK_SEP + BRICK_HEIGHT;
+		drawRow(y,Color.YELLOW);
+		y += BRICK_SEP + BRICK_HEIGHT;
+		drawRow(y,Color.GREEN);
+		y += BRICK_SEP + BRICK_HEIGHT;
+		drawRow(y,Color.GREEN);
+		y += BRICK_SEP + BRICK_HEIGHT;
+		drawRow(y,Color.CYAN);
+		y += BRICK_SEP + BRICK_HEIGHT;
+		drawRow(y,Color.CYAN);
+		
+		
 	}
 	
 	private void drawRow(int y, Color c) {
