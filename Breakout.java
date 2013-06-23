@@ -85,9 +85,9 @@ public class Breakout extends GraphicsProgram {
 	
 	private void drawRow(int y, Color c) {
 		for (int i = 0; i < NBRICKS_PER_ROW; i++) {
-			int x = 34;
+			int x = 8;
 			int dx = (BRICK_WIDTH + BRICK_SEP) * i;
-			x = 34 + dx;
+			x = x + dx;
 			GRect brick = new GRect (x,y,BRICK_WIDTH,BRICK_HEIGHT);
 			brick.setColor(c);
 			brick.setFilled(true);
