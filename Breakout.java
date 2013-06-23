@@ -60,7 +60,18 @@ public class Breakout extends GraphicsProgram {
 /* Method: run() */
 /** Runs the Breakout program. */
 	public void run() {
-		/* You fill this in, along with any subsidiary methods */
+		drawBricks();
+		// putPaddle();
+		// for (3 times) - 
+		// play
+		// 
 	}
+	private void drawBricks() {
+		setBackground(Color.BLACK);
+	}
+	
 
+	//DEFINE METHODS:
+	//private void play()
+	//private void putPaddle()
 }
