@@ -66,10 +66,33 @@ public class Breakout extends GraphicsProgram {
 		// play
 		// 
 	}
+/* Draws 10 rows of bricks of the following colors:
+ * RED, ORANGE, YELLOW, GREEN, CYAN.
+ */
 	private void drawBricks() {
 		setBackground(Color.BLACK);
+		int y = BRICK_Y_OFFSET;
+		drawRow(y,Color.RED);
+		y += BRICK_SEP + BRICK_HEIGHT;
+		drawRow(y,Color.RED);
+		y += BRICK_SEP + BRICK_HEIGHT;
+		drawRow(y,Color.ORANGE);
+		y += BRICK_SEP + BRICK_HEIGHT;
+		drawRow(y,Color.ORANGE);
+		y += BRICK_SEP + BRICK_HEIGHT;
+		drawRow(y,Color.YELLOW);
 	}
 	
+	private void drawRow(int y, Color c) {
+		for (int i = 0; i < NBRICKS_PER_ROW; i++) {
+			int x = ((WIDTH - ((NBRICKS_PER_ROW * BRICK_WIDTH) + (BRICK_SEP *(NBRICKS_PER_ROW - 1))) / 2)+((BRICK_WIDTH+BRICK_SEP)*i));
+			GRect brick = new GRect (x,y,BRICK_WIDTH,BRICK_HEIGHT);
+			brick.setColor(c);
+			brick.setFilled(true);
+			add(brick);
+		}
+		
+	}
 
 	//DEFINE METHODS:
 	//private void play()
