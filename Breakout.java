@@ -63,13 +63,17 @@ public class Breakout extends GraphicsProgram {
 
 /* Method: run() */
 /** Runs the Breakout program. */
-	public void run() {
-		drawBricks();
+	
+//Don't forget to set the brick counter and decrease when bricks are hit.
+	public void init() {
 		addMouseListeners();
+		drawBricks();
 		
 		// for (3 times) - 
-		// play
+		// if isInPlay is false - on click: play
+		// Set a isInPlay flag to true.
 		// 
+		
 	}
 /* Draws 10 rows of bricks of the following colors:
  * RED, ORANGE, YELLOW, GREEN, CYAN.
@@ -121,4 +125,6 @@ public class Breakout extends GraphicsProgram {
 
 	//DEFINE METHODS:
 	//private void play()
+	//private void hitBrick()
+	
 } // end class.
