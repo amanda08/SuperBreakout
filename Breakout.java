@@ -104,7 +104,8 @@ public class Breakout extends GraphicsProgram {
 	}
 	
 	private void getPaddle() {
-	paddle = new GRect ((WIDTH - PADDLE_WIDTH)/2,HEIGHT - (PADDLE_HEIGHT + PADDLE_Y_OFFSET),PADDLE_WIDTH,PADDLE_HEIGHT);
+	paddleY = HEIGHT - (PADDLE_HEIGHT + PADDLE_Y_OFFSET);
+	paddle = new GRect ((WIDTH - PADDLE_WIDTH)/2,paddleY,PADDLE_WIDTH,PADDLE_HEIGHT);
 	paddle.setColor(Color.WHITE);
 	paddle.setFilled(true);
 	add(paddle);
@@ -122,8 +123,13 @@ public class Breakout extends GraphicsProgram {
 		}
 	}
 	
-	
+	public void mouseMoved(MouseEvent e) {
+		if ((e.getX() > (0 - PADDLE_WIDTH/2)) && (e.getX() < (getWidth() - PADDLE_WIDTH/2))) {
+			paddle.setLocation(e.getX() - PADDLE_WIDTH/2,paddleY);
+		}
+	}
 	private GRect paddle;
+	private int paddleY;
 
 	//DEFINE METHODS:
 	//private void play()
