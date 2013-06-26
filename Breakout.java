@@ -68,6 +68,7 @@ public class Breakout extends GraphicsProgram {
 	public void init() {
 		addMouseListeners();
 		drawBricks();
+		getPaddle();
 		
 		// for (3 times) - 
 		// if isInPlay is false - on click: play
@@ -102,6 +103,13 @@ public class Breakout extends GraphicsProgram {
 		drawRow(y,Color.CYAN);		
 	}
 	
+	private void getPaddle() {
+	paddle = new GRect ((WIDTH - PADDLE_WIDTH)/2,HEIGHT - (PADDLE_HEIGHT + PADDLE_Y_OFFSET),PADDLE_WIDTH,PADDLE_HEIGHT);
+	paddle.setColor(Color.WHITE);
+	paddle.setFilled(true);
+	add(paddle);
+	}
+	
 	private void drawRow(int y, Color c) {
 		for (int i = 0; i < NBRICKS_PER_ROW; i++) {
 			int x = (WIDTH - ROW_WIDTH) / 2;
@@ -113,15 +121,9 @@ public class Breakout extends GraphicsProgram {
 			add(brick);
 		}
 	}
-	private void getPaddle(MouseEvent e) {
-		int x = (WIDTH - PADDLE_WIDTH) / 2;
-		int y = HEIGHT - (PADDLE_HEIGHT+PADDLE_Y_OFFSET);
-		GRect paddle = new GRect (x,y,PADDLE_WIDTH,PADDLE_HEIGHT);
-		paddle.setColor(Color.WHITE);
-		paddle.setFilled(true);
-		add(paddle);
-		paddle.setLocation(e.getX(),e.getY());		
-	}
+	
+	
+	private GRect paddle;
 
 	//DEFINE METHODS:
 	//private void play()
