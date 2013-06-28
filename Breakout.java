@@ -72,7 +72,6 @@ public class Breakout extends GraphicsProgram {
 		addMouseListeners();
 		drawBricks();
 		getPaddle();
-		getBall();	
 		play();
 		//Print game over
 		// if isInPlay is false - on click: play
