@@ -54,6 +54,9 @@ public class Breakout extends GraphicsProgram {
 
 /** Radius of the ball in pixels */
 	private static final int BALL_RADIUS = 10;
+	
+/** Pause duration in milliseconds */
+	private static final int PAUSE_TIME = 2;
 
 /** Offset of the top brick row from the top */
 	private static final int BRICK_Y_OFFSET = 70;
@@ -69,12 +72,44 @@ public class Breakout extends GraphicsProgram {
 		addMouseListeners();
 		drawBricks();
 		getPaddle();
-		getBall();
-		
-		// for (3 times) - 
+		getBall();	
+		play();
+		//Print game over
 		// if isInPlay is false - on click: play
-		// Set a isInPlay flag to true.
-		// 
+		// Set a isInPlay flag to true.	
+	}
+	public void play() {
+		while ((NBricks > 0) && (NBalls > 0)) {
+			getBall();
+			NBalls -= 1;
+			//wait for click?
+			vx = rgen.nextDouble (1.0,3.0);
+			if (rgen.nextBoolean(0.5)) vx = -vx;
+			vy = 1;
+			
+			while (true) {
+				ball.move(vx,vy);
+				pause(PAUSE_TIME);
+				double x = ball.getX();
+				double y = ball.getY();
+				// Tests the location of the ball to check for
+				// the following conditions:
+				// hits right hand wall:
+				if (x >= (getWidth() - BALL_RADIUS)) {
+					vx=-vx;
+				}
+				// hits left hand wall:
+				if (x <= 0) vx=-vx;
+				// hits top wall:
+				if (y <= 0) vy=-vy;
+				// hits bottom wall (ends round):
+				if (y >= HEIGHT) {
+					//Add sound
+					break;
+				}
+			}
+			//break if hits bottom or bricks = 0
+		}
 		
 	}
 /* Draws 10 rows of bricks of the following colors:
@@ -113,7 +148,7 @@ public class Breakout extends GraphicsProgram {
 	}
 	
 	private void getBall() {
-		GOval ball = new GOval((WIDTH/2-BALL_RADIUS/2),HEIGHT/2,BALL_RADIUS,BALL_RADIUS);
+		ball = new GOval((WIDTH/2-BALL_RADIUS/2),HEIGHT/2,BALL_RADIUS,BALL_RADIUS);
 		ball.setFilled(true);
 		ball.setColor(Color.WHITE);
 		add(ball);
@@ -138,7 +173,12 @@ public class Breakout extends GraphicsProgram {
 	}
 	private GRect paddle;
 	private int paddleY;
+	private GOval ball;
 	private int NBricks = NBRICKS_PER_ROW + NBRICK_ROWS;
+	private int NBalls = 3;
+	private double vx, vy;
+	private RandomGenerator rgen = RandomGenerator.getInstance();
+	
 	
 
 	//DEFINE METHODS:
