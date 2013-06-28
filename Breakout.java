@@ -162,9 +162,9 @@ public class Breakout extends GraphicsProgram {
 		add(label);
 		while(true) {
 			label.setVisible(false);
-			pause(10);
+			pause(1000);
 			label.setVisible(true);
-			pause(50);
+			pause(1000);
 		}
 		
 		
