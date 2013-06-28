@@ -73,7 +73,7 @@ public class Breakout extends GraphicsProgram {
 		drawBricks();
 		getPaddle();
 		play();
-		//Print game over
+		gameOver();
 		// if isInPlay is false - on click: play
 		// Set a isInPlay flag to true.	
 	}
@@ -152,7 +152,18 @@ public class Breakout extends GraphicsProgram {
 		ball.setColor(Color.WHITE);
 		add(ball);
 	}
-	
+	private void gameOver() {
+		GLabel label = new GLabel("GAME OVER");
+		label.setFont("Courier-128");
+		label.setColor(Color.RED);
+		double startX = (getWidth()/2 - label.getWidth()/2);
+		double startY = (getHeight()/2);
+		label.setLocation(startX,startY);
+		
+		add(label);
+		
+		
+	}
 	private void drawRow(int y, Color c) {
 		for (int i = 0; i < NBRICKS_PER_ROW; i++) {
 			int x = (WIDTH - ROW_WIDTH) / 2;
