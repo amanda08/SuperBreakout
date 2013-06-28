@@ -69,6 +69,7 @@ public class Breakout extends GraphicsProgram {
 		addMouseListeners();
 		drawBricks();
 		getPaddle();
+		getBall();
 		
 		// for (3 times) - 
 		// if isInPlay is false - on click: play
@@ -111,6 +112,13 @@ public class Breakout extends GraphicsProgram {
 	add(paddle);
 	}
 	
+	private void getBall() {
+		GOval ball = new GOval((WIDTH-BALL_RADIUS/2),HEIGHT/2,BALL_RADIUS,BALL_RADIUS);
+		ball.setFilled(true);
+		ball.setColor(Color.WHITE);
+		add(ball);
+	}
+	
 	private void drawRow(int y, Color c) {
 		for (int i = 0; i < NBRICKS_PER_ROW; i++) {
 			int x = (WIDTH - ROW_WIDTH) / 2;
@@ -130,6 +138,8 @@ public class Breakout extends GraphicsProgram {
 	}
 	private GRect paddle;
 	private int paddleY;
+	private int NBricks = NBRICKS_PER_ROW + NBRICK_ROWS;
+	
 
 	//DEFINE METHODS:
 	//private void play()
