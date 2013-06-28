@@ -154,7 +154,7 @@ public class Breakout extends GraphicsProgram {
 	}
 	private void gameOver() {
 		GLabel label = new GLabel("GAME OVER");
-		label.setFont("Courier-128");
+		label.setFont("Courier-28");
 		label.setColor(Color.RED);
 		double startX = (getWidth()/2 - label.getWidth()/2);
 		double startY = (getHeight()/2);
