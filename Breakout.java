@@ -105,7 +105,15 @@ public class Breakout extends GraphicsProgram {
 					break;
 				}
 				GObject collider = getCollidingObject(x,y);
-				if (collider == paddle) vy=-vy;
+				if (collider != null) {
+					if (collider == paddle) vy=-vy;
+					else {
+						remove(collider);
+						NBricks -= 1;
+						vy=-vy;
+					}
+				}
+				
 				
 				// hits object:
 				
