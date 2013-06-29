@@ -207,14 +207,15 @@ public class Breakout extends GraphicsProgram {
 		}	
 	}
 	private void youWin() {
+		ball.setVisible(false);
 		GLabel label = new GLabel("YOU WIN!");
 		label.setFont("Courier-42");
-		label.setColor(Color.PINK);
+		label.setColor(Color.MAGENTA);
 		double startX = (getWidth()/2 - label.getWidth()/2);
 		double startY = (getHeight()/2);
 		label.setLocation(startX,startY);
-		add(label);
 		youWinClip.play();
+		add(label);
 		while(true) {
 			label.setVisible(false);
 			pause(800);
