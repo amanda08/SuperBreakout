@@ -74,8 +74,6 @@ public class Breakout extends GraphicsProgram {
 		getPaddle();
 		play();
 		gameOver();
-		// if isInPlay is false - on click: play
-		// Set a isInPlay flag to true.	
 	}
 	public void play() {
 		while ((NBricks > 0) && (NBalls > 0)) {
@@ -106,10 +104,23 @@ public class Breakout extends GraphicsProgram {
 					//Add sound
 					break;
 				}
+				getCollidingObject(x,y);
+				// hits object:
+				
+				// hits a brick:
+				
 			}
 			//break if hits bottom or bricks = 0
 		}
 		
+	}
+	private GObject getCollidingObject (double a,double b) {
+		getElementAt(a,b);
+		GObject collider = null;
+		if (getElementAt(a,b) != null) {
+			collider = getElementAt(a,b);
+		}
+		return collider;
 	}
 /* Draws 10 rows of bricks of the following colors:
  * RED, ORANGE, YELLOW, GREEN, CYAN.
@@ -162,9 +173,9 @@ public class Breakout extends GraphicsProgram {
 		add(label);
 		while(true) {
 			label.setVisible(false);
-			pause(700);
+			pause(800);
 			label.setVisible(true);
-			pause(700);
+			pause(800);
 		}
 		
 		
