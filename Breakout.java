@@ -17,7 +17,6 @@ import java.awt.event.*;
 
 // TASKS TO DO:
 // Add sounds for: hit brick, ball out, game over, you win.
-// Add labels for: You win!
 // Add brick counter and ball counter.
 // Add slider to adjust ball speed (3 settings)
 
@@ -63,7 +62,7 @@ public class Breakout extends GraphicsProgram {
 	private static final int BALL_RADIUS = 10;
 	
 /** Pause duration in milliseconds */
-	private static final int PAUSE_TIME = 4;
+	private static final int PAUSE_TIME = 2;
 
 /** Offset of the top brick row from the top */
 	private static final int BRICK_Y_OFFSET = 70;
@@ -245,7 +244,7 @@ public class Breakout extends GraphicsProgram {
 	private int paddleY;
 	private GOval ball;
 	private int NBricks = NBRICKS_PER_ROW * NBRICK_ROWS;
-	private int NBalls = 3;
+	private int NBalls = NTURNS;
 	private double vx, vy;
 	private RandomGenerator rgen = RandomGenerator.getInstance();
 	private AudioClip bounceClip = MediaTools.loadAudioClip("bounce.au");
