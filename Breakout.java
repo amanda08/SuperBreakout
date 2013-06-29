@@ -242,7 +242,7 @@ public class Breakout extends GraphicsProgram {
 	private GRect paddle;
 	private int paddleY;
 	private GOval ball;
-	private int NBricks = NBRICKS_PER_ROW + NBRICK_ROWS;
+	private int NBricks = NBRICKS_PER_ROW * NBRICK_ROWS;
 	private int NBalls = 3;
 	private double vx, vy;
 	private RandomGenerator rgen = RandomGenerator.getInstance();
