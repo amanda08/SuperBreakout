@@ -64,10 +64,10 @@ public class Breakout extends GraphicsProgram {
 /** Number of turns */
 	private static final int NTURNS = 3;
 
-/* Method: run() */
-/** Runs the Breakout program. */
+
+
 	
-//Don't forget to set the brick counter and decrease when bricks are hit.
+
 	public void init() {
 		addMouseListeners();
 		drawBricks();
@@ -75,6 +75,7 @@ public class Breakout extends GraphicsProgram {
 		play();
 		gameOver();
 	}
+	/** Runs the Breakout program. */
 	public void play() {
 		while ((NBricks > 0) && (NBalls > 0)) {
 			getBall();
@@ -106,7 +107,10 @@ public class Breakout extends GraphicsProgram {
 				}
 				GObject collider = getCollidingObject(x,y);
 				if (collider != null) {
-					if (collider == paddle) vy=-vy;
+					if (collider == paddle) {
+						vy=-vy;
+						bounceClip.play();
+					}
 					else {
 						remove(collider);
 						NBricks -= 1;
@@ -223,6 +227,7 @@ public class Breakout extends GraphicsProgram {
 	private int NBalls = 3;
 	private double vx, vy;
 	private RandomGenerator rgen = RandomGenerator.getInstance();
+	private AudioClip bounceClip = MediaTools.loadAudioClip("bounce.au");
 	
 	
 
