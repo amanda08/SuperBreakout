@@ -16,7 +16,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 // TASKS TO DO:
-// Add sounds for: hit brick, ball out, game over, you win.
+// Add game music.
 // Add brick counter and ball counter.
 // Add slider to adjust ball speed (3 settings)
 
