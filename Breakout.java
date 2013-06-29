@@ -78,6 +78,7 @@ public class Breakout extends GraphicsProgram {
 
 	public void init() {
 		addMouseListeners();
+		startClip.play();
 		drawBricks();
 		getPaddle();
 		play();
@@ -89,6 +90,7 @@ public class Breakout extends GraphicsProgram {
 			getBall();
 			NBalls -= 1;
 			//wait for click?
+			waitForClick();
 			vx = rgen.nextDouble (1.0,3.0);
 			if (rgen.nextBoolean(0.5)) vx = -vx;
 			vy = 1;
@@ -239,6 +241,7 @@ public class Breakout extends GraphicsProgram {
 	private AudioClip bounceClip = MediaTools.loadAudioClip("bounce.au");
 	private AudioClip brickClip = MediaTools.loadAudioClip("beep002.au");
 	private AudioClip ballOutClip = MediaTools.loadAudioClip("boing002.au");
+	private AudioClip startClip = MediaTools.loadAudioClip("anthem.au");
 	
 	
 
