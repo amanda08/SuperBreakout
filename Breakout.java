@@ -110,7 +110,7 @@ public class Breakout extends GraphicsProgram {
 				if (y <= 0) vy=-vy;
 				// hits bottom wall (ends round):
 				if (y >= HEIGHT) {
-					//Add sound
+					ballOutClip.play();
 					break;
 				}
 				GObject collider = getCollidingObject(x,y);
@@ -123,6 +123,7 @@ public class Breakout extends GraphicsProgram {
 						remove(collider);
 						NBricks -= 1;
 						vy=-vy;
+						brickClip.play();
 					}
 				}
 				
@@ -236,6 +237,8 @@ public class Breakout extends GraphicsProgram {
 	private double vx, vy;
 	private RandomGenerator rgen = RandomGenerator.getInstance();
 	private AudioClip bounceClip = MediaTools.loadAudioClip("bounce.au");
+	private AudioClip brickClip = MediaTools.loadAudioClip("beep002.au");
+	private AudioClip ballOutClip = MediaTools.loadAudioClip("boing002.au");
 	
 	
 
