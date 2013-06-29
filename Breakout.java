@@ -210,7 +210,7 @@ public class Breakout extends GraphicsProgram {
 		ball.setVisible(false);
 		GLabel label = new GLabel("YOU WIN!");
 		label.setFont("Courier-42");
-		label.setColor(Color.MAGENTA);
+		label.setColor(Color.decode("#FF69B4"));
 		double startX = (getWidth()/2 - label.getWidth()/2);
 		double startY = (getHeight()/2);
 		label.setLocation(startX,startY);
