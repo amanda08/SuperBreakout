@@ -126,7 +126,7 @@ public class Breakout extends GraphicsProgram {
 						vy=-vy;
 						brickClip.play();
 					}
-				if (NBricks < 0)
+				if (NBricks <= 0)
 					break;
 				}	
 			}
