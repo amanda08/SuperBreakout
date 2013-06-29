@@ -154,7 +154,7 @@ public class Breakout extends GraphicsProgram {
  * RED, ORANGE, YELLOW, GREEN, CYAN.
  */
 	private void drawBricks() {
-		setBackground(Color.PINK);
+		setBackground(Color.BLACK);
 		int y = BRICK_Y_OFFSET;
 		drawRow(y,Color.RED);
 		y += BRICK_SEP + BRICK_HEIGHT;
