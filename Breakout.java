@@ -19,7 +19,6 @@ import java.awt.event.*;
 // Add sounds for: hit brick, ball out, game over, you win.
 // Add labels for: You win!
 // Add brick counter and ball counter.
-// Add mouse click
 // Add slider to adjust ball speed (3 settings)
 
 
