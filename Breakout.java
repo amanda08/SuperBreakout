@@ -90,7 +90,8 @@ public class Breakout extends GraphicsProgram {
 			getBall();
 			NBalls -= 1;
 			waitForClick();
-			vx = rgen.nextDouble (1.0,3.0);
+			//Don't forget to adjust this back to 1.0 and 3.0
+			vx = rgen.nextDouble (0.2,1.0);
 			if (rgen.nextBoolean(0.5)) vx = -vx;
 			vy = 1;
 			
