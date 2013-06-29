@@ -104,7 +104,9 @@ public class Breakout extends GraphicsProgram {
 					//Add sound
 					break;
 				}
-				getCollidingObject(x,y);
+				GObject collider = getCollidingObject(x,y);
+				if (collider == paddle) vy=-vy;
+				
 				// hits object:
 				
 				// hits a brick:
@@ -119,6 +121,15 @@ public class Breakout extends GraphicsProgram {
 		GObject collider = null;
 		if (getElementAt(a,b) != null) {
 			collider = getElementAt(a,b);
+		}
+		if (getElementAt((a + 2*BALL_RADIUS),b) !=null) {
+			collider = getElementAt((a + 2*BALL_RADIUS),b);
+		}
+		if (getElementAt((a + 2*BALL_RADIUS),(b + 2*BALL_RADIUS)) !=null) {
+			collider = getElementAt((a + 2*BALL_RADIUS),(b + 2*BALL_RADIUS));
+		}
+		if (getElementAt(a,(b + 2*BALL_RADIUS)) !=null) {
+			collider = getElementAt(a,(b + 2*BALL_RADIUS));
 		}
 		return collider;
 	}
