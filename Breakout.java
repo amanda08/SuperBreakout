@@ -90,7 +90,7 @@ public class Breakout extends GraphicsProgram {
 			NBalls -= 1;
 			//wait for click?
 			waitForClick();
-			vx = rgen.nextDouble (1.0,3.0);
+			vx = rgen.nextDouble (1.0,1.5);
 			if (rgen.nextBoolean(0.5)) vx = -vx;
 			vy = 1;
 			
