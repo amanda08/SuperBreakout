@@ -63,7 +63,7 @@ public class Breakout extends GraphicsProgram {
 	private static final int BALL_RADIUS = 10;
 	
 /** Pause duration in milliseconds */
-	private static final int PAUSE_TIME = 4;
+	private static final int PAUSE_TIME = 6;
 
 /** Offset of the top brick row from the top */
 	private static final int BRICK_Y_OFFSET = 70;
@@ -90,7 +90,7 @@ public class Breakout extends GraphicsProgram {
 			NBalls -= 1;
 			//wait for click?
 			waitForClick();
-			vx = rgen.nextDouble (1.0,1.5);
+			vx = rgen.nextDouble (1.0,3.0);
 			if (rgen.nextBoolean(0.5)) vx = -vx;
 			vy = 1;
 			
