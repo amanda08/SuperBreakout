@@ -77,18 +77,18 @@ public class Breakout extends GraphicsProgram {
 
 	public void init() {
 		addMouseListeners();
-		startClip.play();
+		// startClip.play();
 		drawBricks();
 		getPaddle();
 		play();
-		gameOver();
+		if (NBricks > 0 ) gameOver();
+		if (NBricks <= 0 ) youWin();
 	}
 	/** Runs the Breakout program. */
 	public void play() {
 		while ((NBricks > 0) && (NBalls > 0)) {
 			getBall();
 			NBalls -= 1;
-			//wait for click?
 			waitForClick();
 			vx = rgen.nextDouble (1.0,3.0);
 			if (rgen.nextBoolean(0.5)) vx = -vx;
@@ -126,15 +126,10 @@ public class Breakout extends GraphicsProgram {
 						vy=-vy;
 						brickClip.play();
 					}
-				}
-				
-				
-				// hits object:
-				
-				// hits a brick:
-				
+				if (NBricks == 0)
+					break;
+				}	
 			}
-			//break if hits bottom or bricks = 0
 		}
 		
 	}
@@ -209,9 +204,23 @@ public class Breakout extends GraphicsProgram {
 			pause(800);
 			label.setVisible(true);
 			pause(800);
+		}	
+	}
+	private void youWin() {
+		GLabel label = new GLabel("YOU WIN!");
+		label.setFont("Courier-42");
+		label.setColor(Color.PINK);
+		double startX = (getWidth()/2 - label.getWidth()/2);
+		double startY = (getHeight()/2);
+		label.setLocation(startX,startY);
+		add(label);
+		youWinClip.play();
+		while(true) {
+			label.setVisible(false);
+			pause(800);
+			label.setVisible(true);
+			pause(800);
 		}
-		
-		
 	}
 	private void drawRow(int y, Color c) {
 		for (int i = 0; i < NBRICKS_PER_ROW; i++) {
@@ -241,6 +250,7 @@ public class Breakout extends GraphicsProgram {
 	private AudioClip brickClip = MediaTools.loadAudioClip("beep002.au");
 	private AudioClip ballOutClip = MediaTools.loadAudioClip("boing002.au");
 	private AudioClip startClip = MediaTools.loadAudioClip("anthem.au");
+	private AudioClip youWinClip = MediaTools.loadAudioClip("rooster.au");
 	
 	
 
