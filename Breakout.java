@@ -32,7 +32,7 @@ public class Breakout extends GraphicsProgram {
 	private static final int HEIGHT = APPLICATION_HEIGHT;
 
 /** Dimensions of the paddle */
-	private static final int PADDLE_WIDTH = 100;
+	private static final int PADDLE_WIDTH = 60;
 	private static final int PADDLE_HEIGHT = 10;
 
 /** Offset of the paddle up from the bottom */
@@ -62,7 +62,7 @@ public class Breakout extends GraphicsProgram {
 	private static final int BALL_RADIUS = 10;
 	
 /** Pause duration in milliseconds */
-	private static final int PAUSE_TIME = 5;
+	private static final int PAUSE_TIME = 4;
 
 /** Offset of the top brick row from the top */
 	private static final int BRICK_Y_OFFSET = 70;
