@@ -62,13 +62,13 @@ public class Breakout extends GraphicsProgram {
 	private static final int BALL_RADIUS = 10;
 	
 /** Pause duration in milliseconds */
-	private static final int PAUSE_TIME = 3;
+	private static final int PAUSE_TIME = 4;
 
 /** Offset of the top brick row from the top */
 	private static final int BRICK_Y_OFFSET = 70;
 
 /** Number of turns */
-	private static final int NTURNS = 3;
+	private static final int NTURNS = 7;
 
 
 
