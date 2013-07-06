@@ -18,7 +18,8 @@ import java.awt.event.*;
 // TASKS TO DO:
 // Add game music.
 // Add brick counter and ball counter.
-// Add slider to adjust ball speed (3 settings)
+// Increase difficulty after 7 bounces.
+// Add slider to adjust ball speed & paddle width(3 settings)
 
 
 public class Breakout extends GraphicsProgram {
