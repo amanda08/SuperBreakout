@@ -91,7 +91,7 @@ public class Breakout extends GraphicsProgram {
 			NBalls -= 1;
 			waitForClick();
 			//Don't forget to adjust this back to 1.0 and 3.0
-			vx = rgen.nextDouble (1.0,3.0);
+			vx = rgen.nextDouble (1.0,2.0);
 			if (rgen.nextBoolean(0.5)) vx = -vx;
 			vy = 1;
 			
