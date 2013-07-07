@@ -34,7 +34,7 @@ public class Breakout extends GraphicsProgram {
 
 /** Dimensions of the paddle */
 	//Default 80
-	private static final int PADDLE_WIDTH = 400;
+	private static final int PADDLE_WIDTH = 120;
 	private static final int PADDLE_HEIGHT = 10;
 
 /** Offset of the paddle up from the bottom */
@@ -70,7 +70,7 @@ public class Breakout extends GraphicsProgram {
 	private static final int BRICK_Y_OFFSET = 70;
 
 /** Number of turns */
-	private static final int NTURNS = 7;
+	private static final int NTURNS = 12;
 
 
 
