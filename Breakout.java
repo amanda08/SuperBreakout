@@ -33,7 +33,8 @@ public class Breakout extends GraphicsProgram {
 	private static final int HEIGHT = APPLICATION_HEIGHT;
 
 /** Dimensions of the paddle */
-	private static final int PADDLE_WIDTH = 80;
+	//Default 80
+	private static final int PADDLE_WIDTH = 400;
 	private static final int PADDLE_HEIGHT = 10;
 
 /** Offset of the paddle up from the bottom */
@@ -82,7 +83,7 @@ public class Breakout extends GraphicsProgram {
 		getPaddle();
 		play();
 		if (NBricks > 0 ) gameOver();
-		if (NBricks <= 0 ) youWin();
+		if (NBricks == 0 ) youWin();
 	}
 	/** Runs the Breakout program. */
 	public void play() {
@@ -91,7 +92,7 @@ public class Breakout extends GraphicsProgram {
 			NBalls -= 1;
 			waitForClick();
 			//Don't forget to adjust this back to 1.0 and 3.0
-			vx = rgen.nextDouble (0.5,1.5);
+			vx = rgen.nextDouble (1.0,3.0);
 			if (rgen.nextBoolean(0.5)) vx = -vx;
 			vy = 1;
 			
@@ -127,7 +128,7 @@ public class Breakout extends GraphicsProgram {
 						vy=-vy;
 						brickClip.play();
 					}
-				if (NBricks <= 0)
+				if (NBricks == 0)
 					break;
 				}	
 			}
@@ -253,11 +254,5 @@ public class Breakout extends GraphicsProgram {
 	private AudioClip ballOutClip = MediaTools.loadAudioClip("boing002.au");
 	private AudioClip startClip = MediaTools.loadAudioClip("anthem.au");
 	private AudioClip youWinClip = MediaTools.loadAudioClip("rooster.au");
-	
-	
-
-	//DEFINE METHODS:
-	//private void play()
-	//private void hitBrick()
 	
 } // end class.
