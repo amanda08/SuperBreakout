@@ -1,10 +1,10 @@
 /*
  * File: Breakout.java
  * -------------------
- * Name:
- * Section Leader:
+ * Name: Amanda Neumann
+ * CS106A - Assignment #3
  * 
- * This file will eventually implement the game of Breakout.
+ * This file plays the game of Breakout.
  */
 
 import acm.graphics.*;
@@ -15,13 +15,15 @@ import java.applet.*;
 import java.awt.*;
 import java.awt.event.*;
 
-// Super Breakout:
-// Add game music.
-// Add brick counter and ball counter.
-// Increase difficulty after 7 bounces.
-// Add slider to adjust ball speed & paddle width(3 settings)
+/* Modifications for Super Breakout:
+ * Add game music.
+ * Add brick counter and ball counter.
+ * Increase difficulty after 7 bounces.
+ * Add slider to adjust ball speed & paddle width(3 settings)
+ */
 
 
+/** This program plays the game of Breakout */
 public class Breakout extends GraphicsProgram {
 
 /** Width and height of application window in pixels */
@@ -33,8 +35,8 @@ public class Breakout extends GraphicsProgram {
 	private static final int HEIGHT = APPLICATION_HEIGHT;
 
 /** Dimensions of the paddle */
-	//Default 80
-	private static final int PADDLE_WIDTH = 120;
+	/*Default 80 */
+	private static final int PADDLE_WIDTH = 80;
 	private static final int PADDLE_HEIGHT = 10;
 
 /** Offset of the paddle up from the bottom */
@@ -72,10 +74,7 @@ public class Breakout extends GraphicsProgram {
 /** Number of turns */
 	private static final int NTURNS = 12;
 
-
-
-	
-
+/** Initializes the Breakout game */
 	public void init() {
 		addMouseListeners();
 		// startClip.play();
@@ -85,13 +84,13 @@ public class Breakout extends GraphicsProgram {
 		if (NBricks > 0 ) gameOver();
 		if (NBricks == 0 ) youWin();
 	}
-	/** Runs the Breakout program. */
+/** Runs the Breakout game play */
 	public void play() {
 		while ((NBricks > 0) && (NBalls > 0)) {
 			getBall();
 			NBalls -= 1;
 			waitForClick();
-			//Don't forget to adjust this back to 1.0 and 3.0
+			/* Default: 1.0 and 3.0 */
 			vx = rgen.nextDouble (1.0,3.0);
 			if (rgen.nextBoolean(0.5)) vx = -vx;
 			vy = 1;
@@ -101,21 +100,27 @@ public class Breakout extends GraphicsProgram {
 				pause(PAUSE_TIME);
 				double x = ball.getX();
 				double y = ball.getY();
-				// Tests the location of the ball to check for
-				// the following conditions:
-				// hits right hand wall:
+				
+				/* Tests the location of the ball to check for
+				 * the following conditions: */
+				
+				//hits right hand wall:
 				if (x >= (getWidth() - BALL_RADIUS)) {
 					vx=-vx;
 				}
 				// hits left hand wall:
 				if (x <= 0) vx=-vx;
+				
 				// hits top wall:
 				if (y <= 0) vy=-vy;
+				
 				// hits bottom wall (ends round):
 				if (y >= HEIGHT) {
 					ballOutClip.play();
 					break;
 				}
+				
+				// hits a collider:
 				GObject collider = getCollidingObject(x,y);
 				if (collider != null) {
 					if (collider == paddle) {
@@ -128,6 +133,8 @@ public class Breakout extends GraphicsProgram {
 						vy=-vy;
 						brickClip.play();
 					}
+				
+				// Brick counter reaches 0 (ends game):
 				if (NBricks == 0)
 					break;
 				}	
@@ -135,6 +142,7 @@ public class Breakout extends GraphicsProgram {
 		}
 		
 	}
+/* Method to check colliding object */
 	private GObject getCollidingObject (double a,double b) {
 		getElementAt(a,b);
 		GObject collider = null;
@@ -178,7 +186,19 @@ public class Breakout extends GraphicsProgram {
 		y += BRICK_SEP + BRICK_HEIGHT;
 		drawRow(y,Color.CYAN);		
 	}
-	
+/* Method to draw each row of bricks */
+	private void drawRow(int y, Color c) {
+		for (int i = 0; i < NBRICKS_PER_ROW; i++) {
+			int x = (WIDTH - ROW_WIDTH) / 2;
+			int dx = (BRICK_WIDTH + BRICK_SEP) * i;
+			x = x + dx;
+			GRect brick = new GRect (x,y,BRICK_WIDTH,BRICK_HEIGHT);
+			brick.setColor(c);
+			brick.setFilled(true);
+			add(brick);
+		}
+	}
+/* Method to setup paddle */
 	private void getPaddle() {
 	paddleY = HEIGHT - (PADDLE_HEIGHT + PADDLE_Y_OFFSET);
 	paddle = new GRect ((WIDTH - PADDLE_WIDTH)/2,paddleY,PADDLE_WIDTH,PADDLE_HEIGHT);
@@ -186,13 +206,14 @@ public class Breakout extends GraphicsProgram {
 	paddle.setFilled(true);
 	add(paddle);
 	}
-	
+/* Method to setup ball */
 	private void getBall() {
 		ball = new GOval((WIDTH/2-BALL_RADIUS/2),HEIGHT/2,BALL_RADIUS,BALL_RADIUS);
 		ball.setFilled(true);
 		ball.setColor(Color.WHITE);
 		add(ball);
 	}
+/* Method to test when game is over: */
 	private void gameOver() {
 		GLabel label = new GLabel("GAME OVER");
 		label.setFont("Courier-42");
@@ -208,6 +229,7 @@ public class Breakout extends GraphicsProgram {
 			pause(800);
 		}	
 	}
+/* Method if game is won: */
 	private void youWin() {
 		ball.setVisible(false);
 		GLabel label = new GLabel("YOU WIN!");
@@ -225,23 +247,14 @@ public class Breakout extends GraphicsProgram {
 			pause(800);
 		}
 	}
-	private void drawRow(int y, Color c) {
-		for (int i = 0; i < NBRICKS_PER_ROW; i++) {
-			int x = (WIDTH - ROW_WIDTH) / 2;
-			int dx = (BRICK_WIDTH + BRICK_SEP) * i;
-			x = x + dx;
-			GRect brick = new GRect (x,y,BRICK_WIDTH,BRICK_HEIGHT);
-			brick.setColor(c);
-			brick.setFilled(true);
-			add(brick);
-		}
-	}
-	
+
 	public void mouseMoved(MouseEvent e) {
 		if ((e.getX() > (0 + PADDLE_WIDTH/2)) && (e.getX() < (getWidth() - PADDLE_WIDTH/2))) {
 			paddle.setLocation(e.getX() - PADDLE_WIDTH/2,paddleY);
 		}
 	}
+	
+	/* Class variables */
 	private GRect paddle;
 	private int paddleY;
 	private GOval ball;
@@ -252,7 +265,6 @@ public class Breakout extends GraphicsProgram {
 	private AudioClip bounceClip = MediaTools.loadAudioClip("bounce.au");
 	private AudioClip brickClip = MediaTools.loadAudioClip("beep002.au");
 	private AudioClip ballOutClip = MediaTools.loadAudioClip("boing002.au");
-	private AudioClip startClip = MediaTools.loadAudioClip("anthem.au");
 	private AudioClip youWinClip = MediaTools.loadAudioClip("rooster.au");
 	
-} // end class.
+}
