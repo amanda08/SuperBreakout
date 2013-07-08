@@ -76,7 +76,7 @@ public class SuperBreakout extends GraphicsProgram {
 	private static final int BRICK_Y_OFFSET = 70;
 
 /** Number of turns */
-	private static final int NTURNS = 3;
+	private static final int NTURNS = 6;
 
 /** Initializes the Breakout game */
 	public void init() {
