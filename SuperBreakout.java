@@ -255,7 +255,7 @@ public class SuperBreakout extends GraphicsProgram {
 			pause(800);
 		}
 	}
-	
+	/* Method to add a graphical ball counter to the top right: */
 	private void ballCounter() {
 		for (int i = 200; i < 400; i++) {
 			if (getElementAt(i,20) != null) remove(getElementAt(i,20)); 
@@ -265,10 +265,12 @@ public class SuperBreakout extends GraphicsProgram {
 		ballCounter.setColor(Color.WHITE);
 		int ballCounterX = 200;
 		for (int i = 0; i < NBalls; i++) {
-		add(ballCounter, ballCounterX + i * 20, 20);
+		add(ballCounter, ballCounterX, 20);
+		ballCounterX += 20;
 		}
-		
-		
+		GLabel label = new GLabel("Balls remaining: ");
+		label.setColor(Color.WHITE);
+		add(label,200 - label.getWidth(), 20);
 	}
 
 	public void mouseMoved(MouseEvent e) {
