@@ -261,13 +261,12 @@ private void ballCounter() {
 	for (int i = ballCounterX; i < 400; i++) {
 			if (getElementAt(i,20) != null) remove(getElementAt(i,20)); 
 		}
-		ballCounter = new GOval(BALL_RADIUS,BALL_RADIUS);
-		ballCounter.setFilled(true);
-		ballCounter.setColor(Color.WHITE);
-		
 		for (int j = 0; j < 3; j++) {
+			GOval ballCounter = new GOval(BALL_RADIUS,BALL_RADIUS);
+			ballCounter.setFilled(true);
+			ballCounter.setColor(Color.WHITE);
 			add(ballCounter, ballCounterX, 20);
-			ballCounterX = 340;
+			ballCounterX += 20;
 		}
 		GLabel label = new GLabel("Balls remaining: ");
 		label.setColor(Color.WHITE);
@@ -290,7 +289,6 @@ private void ballCounter() {
 	private GRect paddle;
 	private int paddleY;
 	private GOval ball;
-	private GOval ballCounter;
 	
 	private int NBricks = NBRICKS_PER_ROW * NBRICK_ROWS;
 	private int NBalls = NTURNS;
