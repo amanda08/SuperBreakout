@@ -265,10 +265,10 @@ private void ballCounter() {
 		ballCounter.setFilled(true);
 		ballCounter.setColor(Color.WHITE);
 		
-		for (int j = 0; j < NBalls; j++) {
+		//for (int j = 0; j < NBalls; j++) {
 			add(ballCounter, ballCounterX, 20);
 			ballCounterX += 20;
-		}
+		//}
 		GLabel label = new GLabel("Balls remaining: ");
 		label.setColor(Color.WHITE);
 		add(label,300 - label.getWidth(), 20);
