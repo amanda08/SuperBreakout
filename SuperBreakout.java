@@ -261,14 +261,14 @@ private void ballCounter() {
 	for (int i = ballCounterX; i < 400; i++) {
 			if (getElementAt(i,20) != null) remove(getElementAt(i,20)); 
 		}
-		ballCounter = new GOval(10,10);
+		ballCounter = new GOval(BALL_RADIUS,BALL_RADIUS);
 		ballCounter.setFilled(true);
 		ballCounter.setColor(Color.WHITE);
 		
-		//for (int i = 0; i < NBalls; i++) {
-		add(ballCounter, ballCounterX, 20);
-		ballCounterX += 20;
-		//}
+		for (int i = 0; i < NBalls; i++) {
+			add(ballCounter, ballCounterX, 20);
+			ballCounterX += 20;
+		}
 		GLabel label = new GLabel("Balls remaining: ");
 		label.setColor(Color.WHITE);
 		add(label,300 - label.getWidth(), 20);
