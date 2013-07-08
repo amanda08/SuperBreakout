@@ -265,7 +265,7 @@ private void ballCounter() {
 		ballCounter.setFilled(true);
 		ballCounter.setColor(Color.WHITE);
 		
-		for (int i = 0; i < NBalls; i++) {
+		for (int j = 0; j < NBalls; j++) {
 			add(ballCounter, ballCounterX, 20);
 			ballCounterX += 20;
 		}
