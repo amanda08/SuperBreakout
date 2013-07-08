@@ -267,7 +267,7 @@ private void ballCounter() {
 		
 		for (int j = 0; j < 3; j++) {
 			add(ballCounter, ballCounterX, 20);
-			ballCounterX += 20;
+			ballCounterX = 340;
 		}
 		GLabel label = new GLabel("Balls remaining: ");
 		label.setColor(Color.WHITE);
