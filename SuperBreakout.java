@@ -256,21 +256,22 @@ public class SuperBreakout extends GraphicsProgram {
 		}
 	}
 	/* Method to add a graphical ball counter to the top right: */
-	private void ballCounter() {
-		for (int i = 200; i < 400; i++) {
+private void ballCounter() {
+	int ballCounterX = 300;	
+	for (int i = ballCounterX; i < 400; i++) {
 			if (getElementAt(i,20) != null) remove(getElementAt(i,20)); 
 		}
 		ballCounter = new GOval(10,10);
 		ballCounter.setFilled(true);
 		ballCounter.setColor(Color.WHITE);
-		int ballCounterX = 200;
-		for (int i = 0; i < NBalls; i++) {
+		
+		//for (int i = 0; i < NBalls; i++) {
 		add(ballCounter, ballCounterX, 20);
 		ballCounterX += 20;
-		}
+		//}
 		GLabel label = new GLabel("Balls remaining: ");
 		label.setColor(Color.WHITE);
-		add(label,200 - label.getWidth(), 20);
+		add(label,300 - label.getWidth(), 20);
 	}
 
 	public void mouseMoved(MouseEvent e) {
