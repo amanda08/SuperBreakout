@@ -84,6 +84,7 @@ public class SuperBreakout extends GraphicsProgram {
 		// startClip.play();
 		drawBricks();
 		brickCounter();
+		ballCounter();
 		getPaddle();
 		play();
 		if (NBricks > 0 ) gameOver();
@@ -122,6 +123,7 @@ public class SuperBreakout extends GraphicsProgram {
 				// hits bottom wall (ends round):
 				if (y >= HEIGHT) {
 					ballOutClip.play();
+					ballCounter();
 					break;
 				}
 				
@@ -253,6 +255,21 @@ public class SuperBreakout extends GraphicsProgram {
 			pause(800);
 		}
 	}
+	
+	private void ballCounter() {
+		for (int i = 200; i < 400; i++) {
+			if (getElementAt(i,20) != null) remove(getElementAt(i,20)); 
+		}
+		ballCounter = new GOval(10,10);
+		ballCounter.setFilled(true);
+		ballCounter.setColor(Color.WHITE);
+		int ballCounterX = 200;
+		for (int i = 0; i < NBalls; i++) {
+		add(ballCounter, ballCounterX + i * 20, 20);
+		}
+		
+		
+	}
 
 	public void mouseMoved(MouseEvent e) {
 		if ((e.getX() > (0 + PADDLE_WIDTH/2)) && (e.getX() < (getWidth() - PADDLE_WIDTH/2))) {
@@ -263,13 +280,15 @@ public class SuperBreakout extends GraphicsProgram {
 	private void brickCounter() {
 		brickCounter = new GLabel("Brick Count: " + NBricks);
 		brickCounter.setColor(Color.WHITE);
-		add(brickCounter, 20,30);
+		add(brickCounter, 10,20);
 	}
 	
 	/* Class variables */
 	private GRect paddle;
 	private int paddleY;
 	private GOval ball;
+	private GOval ballCounter;
+	
 	private int NBricks = NBRICKS_PER_ROW * NBRICK_ROWS;
 	private int NBalls = NTURNS;
 	private double vx, vy;
